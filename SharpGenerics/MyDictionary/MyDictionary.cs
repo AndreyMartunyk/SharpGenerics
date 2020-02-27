@@ -4,37 +4,53 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyList
+namespace MyDictionary
 {
-    class MyList<T>
+    class MyDictionary<TKey, TValue>
     {
         public int Length { get; private set; }
 
         private const int START_ARRAY_SIZE = 10;
-        private T[] _arr;
+        private KeyValue[] _arr;
 
-        public MyList(int startArraySize = START_ARRAY_SIZE)
+
+        public MyDictionary(int startArraySize = START_ARRAY_SIZE)
         {
             if (startArraySize < 0)
             {
                 startArraySize = START_ARRAY_SIZE;
             }
 
-            _arr = new T[startArraySize];
+            _arr = new KeyValue[startArraySize];
             Length = 0;
         }
 
-        public void Add(T elem)
+        public bool Add(TKey key, TValue value)
         {
+            bool isCollised = true;
             if (_arr.Length <= Length)
             {
                 increaseArray();
             }
-            _arr[Length] = elem;
-            ++Length;
+            for (int i = 0; i < Length; i++)
+            {
+                if (_arr[i].key.Equals(key))
+                {
+                    isCollised = false;
+                    break;
+                }
+            }
+
+            if (isCollised)
+            {
+                _arr[Length] = new KeyValue { key = key, value = value };
+                ++Length;
+            }
+
+            return isCollised;
         }
 
-        public bool TryDelete(T elem)
+        public bool TryDelete(TKey key, TValue value)
         {
             //медот удаляющий элемент
             //если такого нет, возвращает false
@@ -44,7 +60,7 @@ namespace MyList
 
             for (int i = 0; i < Length; i++)
             {
-                if(_arr[i].Equals(elem))
+                if (_arr[i].Equals(key))
                 {
                     deletingItemIndex = i;
                     success = true;
@@ -61,18 +77,33 @@ namespace MyList
             return success;
         }
 
-        public T GetElem (int index)
+        public void GetElemByIndex(int index, out TKey key, out TValue value)
         {
             if (index >= Length || index < 0)
             {
                 throw new IndexOutOfRangeException();
             }
-            return _arr[index];
+            key = _arr[index].key;
+            value = _arr[index].value;
+        }
+
+        public TValue GetValue(TKey key)
+        {
+
+            for (int i = 0; i < Length; i++)
+            {
+                if (_arr[i].key.Equals(key))
+                {
+                    return _arr[i].value;
+                }
+            }
+
+            return default(TValue);
         }
 
         public void ClearArray()
         {
-            _arr = new T[START_ARRAY_SIZE];
+            _arr = new KeyValue[START_ARRAY_SIZE];
             Length = 0;
         }
 
@@ -83,7 +114,7 @@ namespace MyList
                 return;
             }
 
-            T[] newArray = new T[Length];
+            KeyValue[] newArray = new KeyValue[Length];
 
             for (int i = 0; i < Length; i++)
             {
@@ -99,7 +130,7 @@ namespace MyList
             {
                 _arr[i] = _arr[i + 1];
             }
-        } 
+        }
 
         private void increaseArray()
         {
@@ -113,7 +144,7 @@ namespace MyList
                 newSize = _arr.Length + (_arr.Length / 2);
             }
 
-            T[] newArray = new T[newSize];
+            KeyValue[] newArray = new KeyValue[newSize];
 
             for (int i = 0; i < _arr.Length; i++)
             {
@@ -123,5 +154,12 @@ namespace MyList
             _arr = newArray;
         }
 
+        private struct KeyValue
+        {
+            public TKey key;
+            public TValue value;
+
+        }
     }
+
 }
