@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyList
+namespace CarCollection
 {
-    class MyList<T>
+    class CarCollection<T> where T : Car
     {
         public int Length { get; private set; }
 
         private const int START_ARRAY_SIZE = 10;
         private T[] _arr;
 
-        public MyList(int startArraySize = START_ARRAY_SIZE)
+        public CarCollection(int startArraySize = START_ARRAY_SIZE)
         {
             if (startArraySize < 0)
             {
@@ -34,42 +34,9 @@ namespace MyList
             ++Length;
         }
 
-        public bool TryDelete(T elem)
+        public void Add(string carName, int yearOfIssue)
         {
-            //медот удаляющий элемент
-            //если такого нет, возвращает false
-            //если есть удаляем, затем смещаем массив, затем уменьшаем переменную Length
-            bool success = false;
-            int deletingItemIndex = -1;
-
-            for (int i = 0; i < Length; i++)
-            {
-                if(_arr[i].Equals(elem))
-                {
-                    deletingItemIndex = i;
-                    success = true;
-                    break;
-                }
-            }
-
-            if (success)
-            {
-                displaceArray(deletingItemIndex);
-                --Length;
-            }
-
-            return success;
-        }
-        public T this[int index]
-        {
-            get
-            {
-                if (index >= Length || index < 0)
-                {
-                    throw new IndexOutOfRangeException();
-                }
-                return _arr[index];
-            }
+            Add((T)new Car(carName, yearOfIssue));
         }
 
         public void ClearArray()
@@ -101,7 +68,7 @@ namespace MyList
             {
                 _arr[i] = _arr[i + 1];
             }
-        } 
+        }
 
         private void increaseArray()
         {
@@ -124,6 +91,5 @@ namespace MyList
 
             _arr = newArray;
         }
-
     }
 }

@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyList", "MyList\MyList.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDictionary", "MyDictionary\MyDictionary.csproj", "{46740363-5BF0-4823-9CFB-5BCEEE1C503A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCollection", "CarCollection\CarCollection.csproj", "{5BE6D4F4-8D87-4F10-A172-72AE51967188}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayList", "ArrayList\ArrayList.csproj", "{29AFD99E-94A9-430F-8FE1-5A3A3F2A82D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{46740363-5BF0-4823-9CFB-5BCEEE1C503A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46740363-5BF0-4823-9CFB-5BCEEE1C503A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46740363-5BF0-4823-9CFB-5BCEEE1C503A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BE6D4F4-8D87-4F10-A172-72AE51967188}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BE6D4F4-8D87-4F10-A172-72AE51967188}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BE6D4F4-8D87-4F10-A172-72AE51967188}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BE6D4F4-8D87-4F10-A172-72AE51967188}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29AFD99E-94A9-430F-8FE1-5A3A3F2A82D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29AFD99E-94A9-430F-8FE1-5A3A3F2A82D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29AFD99E-94A9-430F-8FE1-5A3A3F2A82D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29AFD99E-94A9-430F-8FE1-5A3A3F2A82D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

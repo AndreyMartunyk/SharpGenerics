@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7AC2DFF9-B402-4FAB-8071-8410817CAB47}</ProjectGuid>
+    <ProjectGuid>{5BE6D4F4-8D87-4F10-A172-72AE51967188}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MyList</RootNamespace>
-    <AssemblyName>MyList</AssemblyName>
+    <RootNamespace>CarCollection</RootNamespace>
+    <AssemblyName>CarCollection</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,10 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyList.cs" />
-    <Compile Include="MyListAddition.cs" />
+    <Compile Include="Car.cs" />
+    <Compile Include="CarCollection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Truck.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

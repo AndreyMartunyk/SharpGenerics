@@ -27,21 +27,23 @@ namespace MyDictionary
 
         public bool Add(TKey key, TValue value)
         {
-            bool isCollised = true;
+            bool isCollised = false;
+
             if (_arr.Length <= Length)
             {
                 increaseArray();
             }
+
             for (int i = 0; i < Length; i++)
             {
                 if (_arr[i].key.Equals(key))
                 {
-                    isCollised = false;
+                    isCollised = true;
                     break;
                 }
             }
 
-            if (isCollised)
+            if (!isCollised)
             {
                 _arr[Length] = new KeyValue { key = key, value = value };
                 ++Length;
@@ -50,7 +52,7 @@ namespace MyDictionary
             return isCollised;
         }
 
-        public bool TryDelete(TKey key, TValue value)
+        public bool TryDelete(TKey key)
         {
             //медот удаляющий элемент
             //если такого нет, возвращает false
@@ -60,7 +62,7 @@ namespace MyDictionary
 
             for (int i = 0; i < Length; i++)
             {
-                if (_arr[i].Equals(key))
+                if (_arr[i].key.Equals(key))
                 {
                     deletingItemIndex = i;
                     success = true;
@@ -77,6 +79,16 @@ namespace MyDictionary
             return success;
         }
 
+        
+
+        public TValue this[TKey key]
+        {
+            get
+            {
+                return GetValue(key);
+            }
+        }
+        
         public void GetElemByIndex(int index, out TKey key, out TValue value)
         {
             if (index >= Length || index < 0)
@@ -159,6 +171,15 @@ namespace MyDictionary
             public TKey key;
             public TValue value;
 
+            public bool Equals(KeyValue obj)
+            {
+                if (!key.Equals(obj.key) || !value.Equals(obj.value))
+                {
+                    return false;
+                }
+                
+                return true;
+            }
         }
     }
 
